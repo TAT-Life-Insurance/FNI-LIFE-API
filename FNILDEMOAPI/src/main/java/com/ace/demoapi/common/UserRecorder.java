@@ -6,7 +6,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import lombok.Data;
-@Data
+
 public class UserRecorder {
 	private String createdUserId;
 	@Temporal(TemporalType.TIMESTAMP)
