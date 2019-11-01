@@ -11,8 +11,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -32,6 +30,7 @@ import com.ace.demoapi.common.PassportType;
 import com.ace.demoapi.common.PermanentAddress;
 import com.ace.demoapi.common.ResidentAddress;
 import com.ace.demoapi.common.UserRecorder;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -44,7 +43,6 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "CUSTOMER_GEN")
 	private String id;
 
 	private String initialId;
@@ -132,6 +130,7 @@ public class Customer implements Serializable {
 	@JoinColumn(name = "NATIONALITYID", referencedColumnName = "ID")
 	private Country country;
 
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", orphanRemoval = true)
 	private List<CustomerInfoStatus> customerStatusList;
 

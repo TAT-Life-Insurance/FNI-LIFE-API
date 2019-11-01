@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,9 +12,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
 import com.ace.demoapi.common.UserRecorder;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
-
 
 @Data
 @Entity
@@ -36,6 +35,7 @@ public class SalesPoints implements Serializable {
 	@JoinColumn(name = "TOWNSHIPID", referencedColumnName = "ID")
 	private Township township;
 
+	@JsonBackReference
 	@OneToOne
 	@JoinColumn(name = "BRANCHID", referencedColumnName = "ID")
 	private Branch branch;
@@ -45,7 +45,5 @@ public class SalesPoints implements Serializable {
 
 	@Version
 	private int version;
-
-	
 
 }

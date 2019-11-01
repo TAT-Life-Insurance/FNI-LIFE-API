@@ -15,6 +15,7 @@ import javax.persistence.Version;
 
 import com.ace.demoapi.common.CustomerStatus;
 import com.ace.demoapi.common.UserRecorder;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
@@ -29,6 +30,7 @@ public class CustomerInfoStatus implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private CustomerStatus statusName;
 
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "CUSTOMERID", referencedColumnName = "ID")
 	private Customer customer;

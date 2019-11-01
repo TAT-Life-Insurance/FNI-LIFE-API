@@ -15,9 +15,10 @@ public class CustomerController {
 	@Autowired
 	private ICustomerService customerService;
 
-	@GetMapping(path = "/customers", produces = "application/json")
+	@GetMapping(path = "/customers")
 	public List<Customer> getAllCustomer() {
 		List<Customer> customerList = customerService.findAllCustomer();
+
 		return customerList;
 	}
 
