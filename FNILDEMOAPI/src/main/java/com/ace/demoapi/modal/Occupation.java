@@ -1,8 +1,6 @@
 package com.ace.demoapi.modal;
 
 import javax.persistence.Embedded;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Version;
 
@@ -11,7 +9,6 @@ import com.ace.demoapi.common.UserRecorder;
 public class Occupation {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "OCCUPATION_GEN")
 	private String id;
 
 	private String name;

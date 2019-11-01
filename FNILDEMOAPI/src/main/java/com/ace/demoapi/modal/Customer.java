@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
@@ -38,6 +39,7 @@ import com.ace.demoapi.common.UserRecorder;
 import lombok.Data;
 
 @Data
+@Entity
 public class Customer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
