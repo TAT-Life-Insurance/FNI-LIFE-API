@@ -1,6 +1,7 @@
 package com.ace.demoapi.modal;
 
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,11 @@ import javax.persistence.Version;
 
 import com.ace.demoapi.common.UserRecorder;
 
+import lombok.Data;
+
+
+@Data
+@Entity
 public class BankBranch {
 
 	@Id
@@ -34,64 +40,7 @@ public class BankBranch {
 	@Version
 	private int version;
 
-	public BankBranch() {
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescription() {
-		return this.description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public int getVersion() {
-		return version;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
-	}
-
-	public String getBranchCode() {
-		return branchCode;
-	}
-
-	public void setBranchCode(String branchCode) {
-		this.branchCode = branchCode;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public UserRecorder getRecorder() {
-		return recorder;
-	}
-
-	public void setRecorder(UserRecorder recorder) {
-		this.recorder = recorder;
-	}
+	
 
 	public String getFullAddress() {
 		String fullAddress = "";
@@ -102,20 +51,6 @@ public class BankBranch {
 		return fullAddress;
 	}
 
-	public Bank getBank() {
-		return bank;
-	}
-
-	public void setBank(Bank bank) {
-		this.bank = bank;
-	}
-
-	public Township getTownship() {
-		return township;
-	}
-
-	public void setTownship(Township township) {
-		this.township = township;
-	}
+	
 
 }

@@ -23,7 +23,6 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.persistence.Version;
 
-import org.dom4j.Branch;
 
 import com.ace.demoapi.common.ContentInfo;
 import com.ace.demoapi.common.FamilyInfo;
