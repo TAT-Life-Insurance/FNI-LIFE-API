@@ -36,7 +36,6 @@ public class Branch implements Serializable {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "TOWNSHIPID", referencedColumnName = "ID")
 	private Township township;
-
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "branch", orphanRemoval = true)
 	private List<SalesPoints> salesPointsList;
 

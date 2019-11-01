@@ -3,7 +3,9 @@ package com.ace.demoapi.common;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
@@ -21,6 +23,7 @@ import lombok.Data;
 
 
 @Data
+@Embeddable
 public class FamilyInfo {
 
 	private String initialId;

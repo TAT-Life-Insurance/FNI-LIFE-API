@@ -1,6 +1,7 @@
 package com.ace.demoapi.common;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Transient;
 
 import lombok.Data;
 
@@ -11,8 +12,7 @@ public class Name {
 	private String middleName;
 	private String lastName;
 
-	
-
+	@Transient
 	public String getFullName() {
 		String result = "";
 		if (firstName != null && !firstName.isEmpty()) {
@@ -26,5 +26,6 @@ public class Name {
 		}
 		return result;
 	}
+	
 
 }
