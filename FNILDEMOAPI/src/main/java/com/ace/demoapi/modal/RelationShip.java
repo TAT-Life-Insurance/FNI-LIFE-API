@@ -10,8 +10,6 @@ import javax.persistence.Version;
 import com.ace.demoapi.common.UserRecorder;
 
 import lombok.Data;
-
-
 @Data
 @Entity
 public class RelationShip {
