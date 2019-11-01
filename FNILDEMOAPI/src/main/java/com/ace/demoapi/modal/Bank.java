@@ -10,7 +10,10 @@ import javax.persistence.Version;
 
 import com.ace.demoapi.common.UserRecorder;
 
+import lombok.Data;
+
 @Entity
+@Data
 public class Bank {
 
 	@Id
@@ -28,62 +31,5 @@ public class Bank {
 	@Version
 	private int version;
 
-	public Bank() {
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescription() {
-		return this.description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getAcode() {
-		return this.acode;
-	}
-
-	public void setAcode(String acode) {
-		this.acode = acode;
-	}
-
-	public int getVersion() {
-		return version;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
-	}
-
-	public UserRecorder getRecorder() {
-		return recorder;
-	}
-
-	public void setRecorder(UserRecorder recorder) {
-		this.recorder = recorder;
-	}
-
-	public String getCscBankCode() {
-		return cscBankCode;
-	}
-
-	public void setCscBankCode(String cscBankCode) {
-		this.cscBankCode = cscBankCode;
-	}
+	
 }

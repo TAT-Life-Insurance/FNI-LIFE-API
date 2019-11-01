@@ -17,6 +17,10 @@ import com.ace.demoapi.modal.Industry;
 import com.ace.demoapi.modal.Occupation;
 import com.ace.demoapi.modal.RelationShip;
 
+import lombok.Data;
+
+
+@Data
 public class FamilyInfo {
 
 	private String initialId;
@@ -55,17 +59,7 @@ public class FamilyInfo {
 		tempId = System.nanoTime() + "";
 	}
 
-	public FamilyInfo(String initialId, String idNo, IdType idType, Date dateOfBirth, Name name, RelationShip relationShip, Industry industry, Occupation occupation) {
-		this.initialId = initialId;
-		this.idNo = idNo;
-		this.idType = idType;
-		this.dateOfBirth = dateOfBirth;
-		this.name = name;
-		this.idType = idType;
-		this.relationShip = relationShip;
-		this.industry = industry;
-		this.occupation = occupation;
-	}
+	
 
 	public Name getName() {
 		if (this.name == null) {
@@ -74,57 +68,7 @@ public class FamilyInfo {
 		return this.name;
 	}
 
-	public void setName(Name name) {
-		this.name = name;
-	}
-
-	public IdType getIdType() {
-		return idType;
-	}
-
-	public void setIdType(IdType idType) {
-		this.idType = idType;
-	}
-
-	public String getInitialId() {
-		return initialId;
-	}
-
-	public void setInitialId(String initialId) {
-		this.initialId = initialId;
-	}
-
-	public String getIdNo() {
-		return idNo;
-	}
-
-	public void setIdNo(String idNo) {
-		this.idNo = idNo;
-	}
-
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
-	public Occupation getOccupation() {
-		return this.occupation;
-	}
-
-	public void setOccupation(Occupation occupation) {
-		this.occupation = occupation;
-	}
-
-	public Industry getIndustry() {
-		return this.industry;
-	}
-
-	public void setIndustry(Industry industry) {
-		this.industry = industry;
-	}
+	
 
 	public RelationShip getRelationShip() {
 		if (relationShip == null) {
@@ -134,43 +78,5 @@ public class FamilyInfo {
 		}
 	}
 
-	public void setRelationShip(RelationShip relationShip) {
-		this.relationShip = relationShip;
-	}
-
-	public String getFullName() {
-		return name.getFullName();
-	}
-
-	public String getTempId() {
-		return tempId;
-	}
-
-	public void setTempId(String tempId) {
-		this.tempId = tempId;
-	}
-
-	public String getStateCode() {
-		return stateCode;
-	}
-
-	public void setStateCode(String stateCode) {
-		this.stateCode = stateCode;
-	}
-
-	public String getTownshipCode() {
-		return townshipCode;
-	}
-
-	public void setTownshipCode(String townshipCode) {
-		this.townshipCode = townshipCode;
-	}
-
-	public String getIdConditionType() {
-		return idConditionType;
-	}
-
-	public void setIdConditionType(String idConditionType) {
-		this.idConditionType = idConditionType;
-	}
+	
 }

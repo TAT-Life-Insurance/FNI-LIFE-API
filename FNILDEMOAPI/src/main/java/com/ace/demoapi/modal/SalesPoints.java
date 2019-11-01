@@ -1,5 +1,7 @@
 package com.ace.demoapi.modal;
 
+import java.io.Serializable;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,20 +19,26 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Township {
-
+public class SalesPoints implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TOWNSHIP_GEN")
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "SALESPOINTS_GEN")
 	private String id;
-
 	private String name;
-	private String shortName;
 	private String code;
 	private String description;
+	private String phone;
+	private String address;
+	private String email;
+	private String receivableAcName;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "DISTRICTID", referencedColumnName = "ID")
-	private District district;
+	@JoinColumn(name = "TOWNSHIPID", referencedColumnName = "ID")
+	private Township township;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "BRANCHID", referencedColumnName = "ID")
+	private Branch branch;
 
 	@Embedded
 	private UserRecorder recorder;
@@ -39,13 +47,5 @@ public class Township {
 	private int version;
 
 	
-
-	public String getFullTownShip() {
-		String fullAddress = name;
-		if (district != null && !district.getFullDistrict().isEmpty()) {
-			fullAddress = name + ", " + district.getFullDistrict();
-		}
-		return fullAddress;
-	}
 
 }
