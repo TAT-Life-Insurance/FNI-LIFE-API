@@ -14,7 +14,6 @@ import com.ace.demoapi.common.UserRecorder;
 
 import lombok.Data;
 
-
 @Data
 @Entity
 public class District {
@@ -35,10 +34,11 @@ public class District {
 
 	@Version
 	private int version;
-
-
+	
 	public String getFullDistrict() {
 		return name + "," + province.getName();
 	}
 
+
+	
 }
