@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -91,7 +92,7 @@ public class Customer implements Serializable {
 	@Embedded
 	private PermanentAddress permanentAddress;
 
-	@Embedded
+@Embedded
 	private ResidentAddress residentAddress;
 
 	@Embedded

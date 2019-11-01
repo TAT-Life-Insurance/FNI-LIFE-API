@@ -1,7 +1,9 @@
 package com.ace.demoapi.common;
 
 import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import com.ace.demoapi.modal.Township;
 
@@ -12,6 +14,7 @@ import lombok.Data;
 public class PermanentAddress {
 
 	private String permanentAddress;
+    @OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "PERMANENTTOWNSHIPID", referencedColumnName = "ID")
 	private Township township;
 
