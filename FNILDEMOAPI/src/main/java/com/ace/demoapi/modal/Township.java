@@ -1,5 +1,7 @@
 package com.ace.demoapi.modal;
 
+import java.io.Serializable;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,10 +16,11 @@ import com.ace.demoapi.common.UserRecorder;
 
 import lombok.Data;
 
-
 @Data
 @Entity
-public class Township {
+public class Township implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TOWNSHIP_GEN")
@@ -37,8 +40,6 @@ public class Township {
 
 	@Version
 	private int version;
-
-	
 
 	public String getFullTownShip() {
 		String fullAddress = name;

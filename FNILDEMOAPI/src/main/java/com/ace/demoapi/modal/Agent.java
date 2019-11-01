@@ -1,7 +1,6 @@
 package com.ace.demoapi.modal;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -37,7 +36,6 @@ import com.ace.demoapi.common.ResidentAddress;
 import com.ace.demoapi.common.UserRecorder;
 
 import lombok.Data;
-
 
 @Data
 @Entity
@@ -134,9 +132,6 @@ public class Agent implements Serializable {
 	@Transient
 	private String idConditionType;
 
-	
-
-	
 	public void loadTransientIdNo() {
 		if (idType != null && idType.equals(IdType.NRCNO) && fullIdNo != null) {
 			String[] NRC = new String[4];
@@ -166,17 +161,11 @@ public class Agent implements Serializable {
 		return result;
 	}
 
-	
-
-	
-
 	/****** System Generated Method ****/
 	public String getAccountNoForView() {
 		if (accountNo == null || accountNo.isEmpty())
 			return " - ";
 		return accountNo;
 	}
-
-	
 
 }

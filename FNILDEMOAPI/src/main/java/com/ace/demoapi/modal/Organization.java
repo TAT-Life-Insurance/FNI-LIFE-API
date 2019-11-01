@@ -18,14 +18,11 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
-import org.dom4j.Branch;
-
 import com.ace.demoapi.common.ContentInfo;
 import com.ace.demoapi.common.PermanentAddress;
 import com.ace.demoapi.common.UserRecorder;
 
 import lombok.Data;
-
 
 @Data
 @Entity
@@ -63,8 +60,6 @@ public class Organization implements Serializable {
 	@Version
 	private int version;
 
-	
-
 	public String getFullAddress() {
 		String fullAddress = "";
 		if (address != null) {
@@ -74,5 +69,4 @@ public class Organization implements Serializable {
 		return fullAddress;
 	}
 
-	
 }
