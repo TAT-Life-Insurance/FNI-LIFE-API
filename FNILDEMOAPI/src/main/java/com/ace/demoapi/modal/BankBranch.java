@@ -28,11 +28,11 @@ public class BankBranch {
 	private String branchCode;
 	private String address;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "BANKID", referencedColumnName = "ID")
 	private Bank bank;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "TOWNSHIPID", referencedColumnName = "ID")
 	private Township township;
 	@Embedded

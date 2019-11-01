@@ -25,7 +25,7 @@ public class District {
 	private String code;
 	private String description;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "PROVINCEID", referencedColumnName = "ID")
 	private Province province;
 

@@ -32,11 +32,11 @@ public class SalesPoints implements Serializable {
 	private String email;
 	private String receivableAcName;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "TOWNSHIPID", referencedColumnName = "ID")
 	private Township township;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "BRANCHID", referencedColumnName = "ID")
 	private Branch branch;
 

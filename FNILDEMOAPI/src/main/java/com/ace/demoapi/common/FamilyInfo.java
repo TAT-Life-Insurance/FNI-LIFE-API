@@ -44,15 +44,15 @@ public class FamilyInfo {
 	@Enumerated(value = EnumType.STRING)
 	private IdType idType;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "RELATIONSHIPID", referencedColumnName = "ID")
 	private RelationShip relationShip;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "INDUSTRYID", referencedColumnName = "ID")
 	private Industry industry;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "OCCUPATIONID", referencedColumnName = "ID")
 	private Occupation occupation;
 	@Transient

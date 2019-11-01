@@ -8,7 +8,6 @@ import javax.persistence.TemporalType;
 
 import lombok.Data;
 
-
 @Data
 @Embeddable
 public class UserRecorder {

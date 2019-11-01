@@ -29,7 +29,7 @@ public class AgentAttachment implements Serializable {
 	private String name;
 	private String filePath;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "AGENTID", referencedColumnName = "ID")
 	private Agent agent;
 	@Embedded

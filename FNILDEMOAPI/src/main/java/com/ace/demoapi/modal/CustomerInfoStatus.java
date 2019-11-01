@@ -26,7 +26,7 @@ public class CustomerInfoStatus {
 	@Enumerated(EnumType.STRING)
 	private CustomerStatus statusName;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "CUSTOMERID", referencedColumnName = "ID")
 	private Customer customer;
 	@Version

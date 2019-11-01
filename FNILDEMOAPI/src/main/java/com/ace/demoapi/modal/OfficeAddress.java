@@ -13,7 +13,7 @@ import lombok.Data;
 public class OfficeAddress {
 	private String officeAddress;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "OFFICETOWNSHIPID", referencedColumnName = "ID")
 	private Township township;
 

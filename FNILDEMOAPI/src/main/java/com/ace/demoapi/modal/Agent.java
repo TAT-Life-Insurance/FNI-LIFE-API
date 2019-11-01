@@ -75,30 +75,30 @@ public class Agent implements Serializable {
 	@CollectionTable(name = "AGENT_FAMILY_LINK", joinColumns = @JoinColumn(name = "AGENTID", referencedColumnName = "ID"))
 	private List<FamilyInfo> familyInfo;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "QUALIFICATIONID", referencedColumnName = "ID")
 	private Qualification qualification;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "BANKBRANCHID", referencedColumnName = "ID")
 	private BankBranch bankBranch;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "RELIGIONID", referencedColumnName = "ID")
 	private Religion religion;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "NATIONALITYID", referencedColumnName = "ID")
 	private Country country;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "ORGANIZATIONID", referencedColumnName = "ID")
 	private Organization organization;
 
 	@Embedded
 	private PermanentAddress permanentAddress;
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "agent", orphanRemoval = true)
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "agent", orphanRemoval = true)
 	private AgentAttachment attachment;
 
 	@Embedded
@@ -117,7 +117,7 @@ public class Agent implements Serializable {
 	@Embedded
 	private ContentInfo contentInfo;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "BRANCHID", referencedColumnName = "ID")
 	private Branch branch;
 	@Embedded

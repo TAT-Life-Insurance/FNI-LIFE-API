@@ -14,7 +14,7 @@ import lombok.Data;
 public class PermanentAddress {
 
 	private String permanentAddress;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
 	@JoinColumn(name = "PERMANENTTOWNSHIPID", referencedColumnName = "ID")
 	private Township township;
 

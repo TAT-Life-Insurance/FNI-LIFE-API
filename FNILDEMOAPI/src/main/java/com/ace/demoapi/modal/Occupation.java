@@ -1,5 +1,7 @@
 package com.ace.demoapi.modal;
 
+import java.io.Serializable;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,10 +11,10 @@ import com.ace.demoapi.common.UserRecorder;
 
 import lombok.Data;
 
-
 @Data
 @Entity
-public class Occupation {
+public class Occupation implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	private String id;
@@ -23,9 +25,8 @@ public class Occupation {
 
 	@Embedded
 	private UserRecorder recorder;
+
 	@Version
 	private int version;
-
-	
 
 }

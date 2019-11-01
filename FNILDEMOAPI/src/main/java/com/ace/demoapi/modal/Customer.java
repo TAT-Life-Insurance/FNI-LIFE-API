@@ -6,13 +6,11 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +21,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.persistence.Version;
-
 
 import com.ace.demoapi.common.ContentInfo;
 import com.ace.demoapi.common.FamilyInfo;
@@ -37,8 +34,10 @@ import com.ace.demoapi.common.ResidentAddress;
 import com.ace.demoapi.common.UserRecorder;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @Entity
 public class Customer implements Serializable {
 
@@ -92,7 +91,7 @@ public class Customer implements Serializable {
 	@Embedded
 	private PermanentAddress permanentAddress;
 
-@Embedded
+	@Embedded
 	private ResidentAddress residentAddress;
 
 	@Embedded
@@ -101,39 +100,39 @@ public class Customer implements Serializable {
 	@Embedded
 	private Name name;
 
-	@ElementCollection(fetch = FetchType.LAZY)
+	@ElementCollection
 	@CollectionTable(name = "CUSTOMER_FAMILY_LINK", joinColumns = @JoinColumn(name = "CUSTOMERID", referencedColumnName = "ID"))
 	private List<FamilyInfo> familyInfo;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "BRANCHID", referencedColumnName = "ID")
 	private Branch branch;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "QUALIFICATIONID", referencedColumnName = "ID")
 	private Qualification qualification;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "BANKBRANCHID", referencedColumnName = "ID")
 	private BankBranch bankBranch;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "RELIGIONID", referencedColumnName = "ID")
 	private Religion religion;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "OCCUPATIONID", referencedColumnName = "ID")
 	private Occupation occupation;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "INDURSTRYID", referencedColumnName = "ID")
 	private Industry industry;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "NATIONALITYID", referencedColumnName = "ID")
 	private Country country;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "customer", orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", orphanRemoval = true)
 	private List<CustomerInfoStatus> customerStatusList;
 
 	@Embedded
@@ -141,5 +140,9 @@ public class Customer implements Serializable {
 
 	@Version
 	private int version;
+
+	public Customer(String id) {
+		this.id = id;
+	}
 
 }

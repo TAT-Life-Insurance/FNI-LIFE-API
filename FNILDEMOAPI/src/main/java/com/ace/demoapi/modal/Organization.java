@@ -52,7 +52,7 @@ public class Organization implements Serializable {
 	@Embedded
 	private ContentInfo contentInfo;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "BRANCHID", referencedColumnName = "ID")
 	private Branch branch;
 	@Embedded

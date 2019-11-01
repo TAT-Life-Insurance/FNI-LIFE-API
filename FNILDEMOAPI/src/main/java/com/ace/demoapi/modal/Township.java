@@ -31,7 +31,7 @@ public class Township implements Serializable {
 	private String code;
 	private String description;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "DISTRICTID", referencedColumnName = "ID")
 	private District district;
 

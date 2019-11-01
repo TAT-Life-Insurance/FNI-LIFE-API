@@ -17,7 +17,8 @@ public class CustomerController {
 
 	@GetMapping(path = "/customers", produces = "application/json")
 	public List<Customer> getAllCustomer() {
-		return customerService.findAllCustomer();
+		List<Customer> customerList = customerService.findAllCustomer();
+		return customerList;
 	}
 
 	@GetMapping(path = "/customer/{id}", produces = "application/json")

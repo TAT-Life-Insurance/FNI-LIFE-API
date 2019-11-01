@@ -33,10 +33,10 @@ public class Branch implements Serializable {
 	private boolean isCoInsuAccess;
 	private String description;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "TOWNSHIPID", referencedColumnName = "ID")
 	private Township township;
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "branch", orphanRemoval = true)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "branch", orphanRemoval = true)
 	private List<SalesPoints> salesPointsList;
 
 	@Embedded

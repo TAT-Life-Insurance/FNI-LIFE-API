@@ -14,7 +14,7 @@ import lombok.Data;
 @Embeddable
 public class ResidentAddress {
 	private String residentAddress;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "RESIDENTTOWNSHIPID", referencedColumnName = "ID")
 	private Township township;
 
