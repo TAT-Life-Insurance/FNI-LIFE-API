@@ -1,14 +1,13 @@
 package com.ace.demoapi.common;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
-import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -21,11 +20,11 @@ import com.ace.demoapi.modal.RelationShip;
 
 import lombok.Data;
 
-
 @Data
 @Embeddable
-public class FamilyInfo {
+public class FamilyInfo implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private String initialId;
 	private String idNo;
 	@Transient
@@ -62,16 +61,12 @@ public class FamilyInfo {
 		tempId = System.nanoTime() + "";
 	}
 
-	
-
 	public Name getName() {
 		if (this.name == null) {
 			this.name = new Name();
 		}
 		return this.name;
 	}
-
-	
 
 	public RelationShip getRelationShip() {
 		if (relationShip == null) {
@@ -81,5 +76,4 @@ public class FamilyInfo {
 		}
 	}
 
-	
 }

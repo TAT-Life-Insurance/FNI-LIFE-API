@@ -1,5 +1,7 @@
 package com.ace.demoapi.modal;
 
+import java.io.Serializable;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,10 +13,11 @@ import com.ace.demoapi.common.UserRecorder;
 
 import lombok.Data;
 
-
 @Data
 @Entity
-public class Country {
+public class Country implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "COUNTRY_GEN")
 	private String id;
@@ -27,7 +30,5 @@ public class Country {
 
 	@Version
 	private int version;
-
-	
 
 }

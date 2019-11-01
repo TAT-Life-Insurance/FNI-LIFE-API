@@ -1,7 +1,8 @@
 package com.ace.demoapi.common;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
@@ -9,10 +10,11 @@ import com.ace.demoapi.modal.Township;
 
 import lombok.Data;
 
-
 @Data
 @Embeddable
-public class ResidentAddress {
+public class ResidentAddress implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private String residentAddress;
 	@OneToOne
 	@JoinColumn(name = "RESIDENTTOWNSHIPID", referencedColumnName = "ID")
@@ -21,8 +23,6 @@ public class ResidentAddress {
 	public ResidentAddress() {
 		township = new Township();
 	}
-
-	
 
 	public String getFullResidentAddress() {
 		if (residentAddress == null || township == null) {

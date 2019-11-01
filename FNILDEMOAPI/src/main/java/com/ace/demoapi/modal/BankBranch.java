@@ -1,8 +1,9 @@
 package com.ace.demoapi.modal;
 
+import java.io.Serializable;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,10 +15,11 @@ import com.ace.demoapi.common.UserRecorder;
 
 import lombok.Data;
 
-
 @Data
 @Entity
-public class BankBranch {
+public class BankBranch implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "BANKBRANCH_GEN")
@@ -40,8 +42,6 @@ public class BankBranch {
 	@Version
 	private int version;
 
-	
-
 	public String getFullAddress() {
 		String fullAddress = "";
 		if (address != null && township != null) {
@@ -50,7 +50,5 @@ public class BankBranch {
 		}
 		return fullAddress;
 	}
-
-	
 
 }
