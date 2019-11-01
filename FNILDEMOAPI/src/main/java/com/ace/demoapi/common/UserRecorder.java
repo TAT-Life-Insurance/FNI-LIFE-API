@@ -2,11 +2,15 @@ package com.ace.demoapi.common;
 
 import java.util.Date;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import lombok.Data;
 
+
+@Data
+@Embeddable
 public class UserRecorder {
 	private String createdUserId;
 	@Temporal(TemporalType.TIMESTAMP)
