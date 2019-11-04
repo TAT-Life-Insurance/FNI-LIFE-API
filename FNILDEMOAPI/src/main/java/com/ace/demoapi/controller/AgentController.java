@@ -23,7 +23,9 @@ public class AgentController {
 
 	@GetMapping(path = "/agent/{id}", produces = "application/json")
 	public Agent getAgentById(@PathVariable String id) {
-		return agentService.findAgentById(id).orElse(null);
-	}
+		Agent agent=agentService.findAgentById(id).orElse(null);
+
+		return agent;
+				}
 
 }
