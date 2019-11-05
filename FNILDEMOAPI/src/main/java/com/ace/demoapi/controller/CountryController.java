@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ace.demoapi.modal.Branch;
 import com.ace.demoapi.modal.Country;
-import com.ace.demoapi.service.IBranchService;
 import com.ace.demoapi.service.ICountryService;
 
 @RestController

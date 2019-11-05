@@ -137,12 +137,46 @@ public class Customer implements Serializable {
 
 	@Embedded
 	private UserRecorder recorder;
+	
+	private boolean isExisting;
 
 	@Version
 	private int version;
 
 	public Customer(String id) {
 		this.id = id;
+	}
+	
+	public String getFullName() {
+		String result = "";
+		if (name != null) {
+			if (initialId != null && !initialId.isEmpty()) {
+				result = initialId;
+			}
+			if (name.getFirstName() != null && !name.getFirstName().isEmpty()) {
+				result = result.trim() + " " + name.getFirstName();
+			}
+			if (name.getMiddleName() != null && !name.getMiddleName().isEmpty()) {
+				result = result.trim() + " " + name.getMiddleName();
+			}
+			if (name.getLastName() != null && !name.getLastName().isEmpty()) {
+				result = result.trim() + " " + name.getLastName();
+			}
+		}
+		return result;
+	}
+	
+	public String getFullAddress() {
+		String result = "";
+		if (residentAddress != null) {
+			if (residentAddress.getResidentAddress() != null && !residentAddress.getResidentAddress().isEmpty()) {
+				result = result + residentAddress.getResidentAddress();
+			}
+			if (residentAddress.getTownship() != null && !residentAddress.getTownship().getFullTownShip().isEmpty()) {
+				result = result + ", " + residentAddress.getTownship().getFullTownShip();
+			}
+		}
+		return result;
 	}
 
 }
