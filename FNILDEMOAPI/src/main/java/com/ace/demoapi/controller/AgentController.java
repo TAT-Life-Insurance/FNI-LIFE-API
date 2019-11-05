@@ -28,6 +28,7 @@ public class AgentController {
 		for (Agent agent : agentList) {
 			AgentDTO agentDTO = new AgentDTO();
 			agentDTO.setId(agent.getId());
+			agentDTO.setInitialId(agent.getInitialId());
 			agentDTO.setFullName(agent.getFullName());
 			agentDTO.setFatherName(agent.getFatherName());
 			agentDTO.setDateOfBirth(agent.getDateOfBirth());
@@ -37,6 +38,8 @@ public class AgentController {
 				agentDTO.setFullIdNo(agent.getFullIdNo());
 			}
 			agentDTO.setResidentAddress(agent.getResidentAddress());
+			agentDTO.setBranch(agent.getBranch());
+			agentDTO.setCountry(agent.getCountry());
 			agentDTO.setLicenseNo(agent.getLiscenseNo());
 			agentDTOList.add(agentDTO);
 		}

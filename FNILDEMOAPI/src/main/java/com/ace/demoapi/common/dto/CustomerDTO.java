@@ -6,6 +6,7 @@ import com.ace.demoapi.common.Gender;
 import com.ace.demoapi.common.IdType;
 import com.ace.demoapi.common.ResidentAddress;
 import com.ace.demoapi.modal.Branch;
+import com.ace.demoapi.modal.Country;
 
 import lombok.Data;
 
@@ -21,4 +22,5 @@ public class CustomerDTO {
 	private String fullIdNo;
 	private ResidentAddress residentAddress;
 	private Branch branch;
+	private Country country;
 }
