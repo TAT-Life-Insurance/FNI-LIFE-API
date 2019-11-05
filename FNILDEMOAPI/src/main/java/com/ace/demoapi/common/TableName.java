@@ -1,6 +1,5 @@
 package com.ace.demoapi.common;
 
-
 public class TableName {
 	public static final String VWT_MEDICALCLAIM_INITIALREPROT_VIEW = "VWT_MEDICALCLAIM_INITIALREPROT_VIEW";
 	public static final String VWT_MEDICALCLAIM_PAYMENTREPROT_VIEW = "VWT_MEDICALCLAIM_PAYMENTREPROT_VIEW";
@@ -354,7 +353,6 @@ public class TableName {
 	public static final String LIFECLAIM_INSUREDPERSON_BENEFICIARY_ATTACHMENT = "LIFECLAIM_INSUREDPERSON_BENEFICIARY_ATTACH_LINK";
 
 	/* LIFE PREMIUM */
-	// TODO
 	public static final String LIFEPOLICYPREMIUM = "LIFEPOLICY_PREMIUM";
 	public static final String LIFEPOLICYBILLING = "LIFEPOLICY_BILLING";
 	public static final String WSVERSIONREF = "WS_VERSION_REF";

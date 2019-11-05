@@ -1,7 +1,5 @@
 package com.ace.demoapi.modal;
 
-
-
 import java.io.Serializable;
 
 import javax.persistence.Embedded;
@@ -18,6 +16,8 @@ import lombok.Data;
 @Data
 @Entity
 public class PaymentType implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PAYMENTTYPE_GEN")
 	private String id;
@@ -30,6 +30,4 @@ public class PaymentType implements Serializable {
 	@Version
 	private int version;
 
-	
-	
 }

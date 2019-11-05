@@ -2,7 +2,6 @@ package com.ace.demoapi.modal;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,11 +33,9 @@ public class District {
 
 	@Version
 	private int version;
-	
+
 	public String getFullDistrict() {
 		return name + "," + province.getName();
 	}
 
-
-	
 }
