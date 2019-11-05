@@ -34,7 +34,7 @@ public class CustomerController {
 			 if(null != customer.getFullIdNo()) {
 				 customerDTO.setFullIdNo(customer.getFullIdNo());
 			 }
-			 customerDTO.setAddress(customer.getFullAddress());
+//			 customerDTO.setAddress(customer.getFullAddress());
 			 customerDTOList.add(customerDTO);
 		 }
 		

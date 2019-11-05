@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
 import com.ace.demoapi.common.UserRecorder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
@@ -41,9 +42,11 @@ public class Branch implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "branch", orphanRemoval = true)
 	private List<SalesPoints> salesPointsList;
 
+	@JsonIgnore
 	@Embedded
 	private UserRecorder recorder;
 
+	@JsonIgnore
 	@Version
 	private int version;
 	

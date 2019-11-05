@@ -13,6 +13,7 @@ import javax.persistence.Version;
 
 import com.ace.demoapi.common.UserRecorder;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -42,9 +43,11 @@ public class SalesPoints implements Serializable {
 	@JoinColumn(name = "BRANCHID", referencedColumnName = "ID")
 	private Branch branch;
 
+	@JsonIgnore
 	@Embedded
 	private UserRecorder recorder;
 
+	@JsonIgnore
 	@Version
 	private int version;
 

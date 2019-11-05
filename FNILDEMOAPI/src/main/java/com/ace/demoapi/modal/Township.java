@@ -12,6 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
 import com.ace.demoapi.common.UserRecorder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -34,9 +35,11 @@ public class Township implements Serializable {
 	@JoinColumn(name = "DISTRICTID", referencedColumnName = "ID")
 	private District district;
 
+	@JsonIgnore
 	@Embedded
 	private UserRecorder recorder;
 
+	@JsonIgnore
 	@Version
 	private int version;
 

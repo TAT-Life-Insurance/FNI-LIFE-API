@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Version;
 
 import com.ace.demoapi.common.UserRecorder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -25,9 +26,11 @@ public class Country implements Serializable {
 	private String description;
 	private String code;
 
+	@JsonIgnore
 	@Embedded
 	private UserRecorder recorder;
 
+	@JsonIgnore
 	@Version
 	private int version;
 
