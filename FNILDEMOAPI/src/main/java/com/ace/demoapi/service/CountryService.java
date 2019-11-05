@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.ace.demoapi.modal.Country;
 import com.ace.demoapi.repository.CountryRepository;
 
@@ -26,6 +25,17 @@ public class CountryService implements ICountryService {
 	public List<Country> findAllCountry() {
 		
 		return countryRepository.findAll();
+	}
+	
+	@Override
+	public void saveCountry(Country country) {
+		countryRepository.save(country);
+	    }
+
+	@Override
+	public void deleteById(String id) {
+		countryRepository.deleteById(id);
+		
 	}
 
 }

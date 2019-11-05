@@ -5,10 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.ace.demoapi.modal.Agent;
 import com.ace.demoapi.modal.Bank;
-import com.ace.demoapi.repository.AgentReposity;
 import com.ace.demoapi.repository.BankRepository;
 
 @Service
@@ -27,6 +24,17 @@ public class BankService implements IBankService {
 	public List<Bank> findAllBank() {
 		
 		return bankRepository.findAll();
+	}
+	
+	@Override
+	public void saveBank(Bank bank) {
+		   bankRepository.save(bank);
+	    }
+
+	@Override
+	public void deleteById(String id) {
+		bankRepository.deleteById(id);
+		
 	}
 
 }

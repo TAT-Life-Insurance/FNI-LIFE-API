@@ -27,5 +27,16 @@ public class AgentService implements IAgentService {
 		
 		return agentRepository.findAll();
 	}
+	
+	@Override
+	public void saveAgent(Agent agent) {
+		agentRepository.save(agent);
+	    }
+
+	@Override
+	public void deleteById(String id) {
+		agentRepository.deleteById(id);
+		
+	}
 
 }

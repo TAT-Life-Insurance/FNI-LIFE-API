@@ -33,6 +33,8 @@ import com.ace.demoapi.common.PermanentAddress;
 import com.ace.demoapi.common.ProductGroupType;
 import com.ace.demoapi.common.ResidentAddress;
 import com.ace.demoapi.common.UserRecorder;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -70,6 +72,7 @@ public class Agent implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date appointedDate;
 
+	@JsonBackReference
 	@ElementCollection
 	@CollectionTable(name = "AGENT_FAMILY_LINK", joinColumns = @JoinColumn(name = "AGENTID", referencedColumnName = "ID"))
 	private List<FamilyInfo> familyInfo;

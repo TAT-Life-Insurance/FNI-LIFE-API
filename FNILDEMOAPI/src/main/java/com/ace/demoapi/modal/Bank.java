@@ -17,7 +17,7 @@ import lombok.Data;
 public class Bank {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "BANK_GEN")
+//	@GeneratedValue(strategy = GenerationType.TABLE, generator = "BANK_GEN")
 	private String id;
 
 	private String name;

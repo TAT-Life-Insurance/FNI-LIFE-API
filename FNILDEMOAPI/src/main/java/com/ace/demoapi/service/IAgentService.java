@@ -5,12 +5,17 @@ import java.util.Optional;
 
 import com.ace.demoapi.modal.Agent;
 
+
 public interface IAgentService {
 	
 
 	Optional<Agent> findAgentById(String id);
 
 	List<Agent> findAllAgent();
+	
+	public void saveAgent(Agent agent);
+	 
+    public void deleteById(String id);
 
 
 }

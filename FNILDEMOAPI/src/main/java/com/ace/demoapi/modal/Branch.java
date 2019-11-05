@@ -25,7 +25,6 @@ import lombok.Data;
 public class Branch implements Serializable {
 	private static final long serialVersionUID = 1680499663032866031L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "BRANCH_GEN")
 	private String id;
 	private String name;
 	private String preFix;
@@ -37,6 +36,7 @@ public class Branch implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "TOWNSHIPID", referencedColumnName = "ID")
 	private Township township;
+
 	
 	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "branch", orphanRemoval = true)

@@ -19,7 +19,6 @@ import lombok.Data;
 public class District {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "DISTRICT_GEN")
 	private String id;
 	private String name;
 	private String code;

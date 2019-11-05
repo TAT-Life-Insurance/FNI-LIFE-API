@@ -3,15 +3,17 @@ package com.ace.demoapi.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ace.demoapi.modal.Bank;
 import com.ace.demoapi.modal.BankBranch;
 import com.ace.demoapi.repository.BankBranchRepository;
-import com.ace.demoapi.repository.BankRepository;
+
 
 @Service
+@Transactional
 public class BankBranchService implements IBankBranchService {
 	
 	@Autowired
@@ -29,7 +31,22 @@ public class BankBranchService implements IBankBranchService {
 		return bankBranchRepository.findAll();
 	}
 	
+	@Override
+	public void saveBankBranch(BankBranch bankBranch) {
+	        bankBranchRepository.save(bankBranch);
+	    }
+
+	@Override
+	public void deleteById(String id) {
+		bankBranchRepository.deleteById(id);
+		
+	}
 
 	
+	
+	  
 
-}
+	    
+	}
+
+	

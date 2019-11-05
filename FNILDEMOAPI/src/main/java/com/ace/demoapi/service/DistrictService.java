@@ -27,4 +27,15 @@ public class DistrictService implements IDistrictService {
 		
 		return districtRepository.findAll();
 	}
+	
+	@Override
+	public void saveDistrict(District district) {
+		districtRepository.save(district);
+	    }
+
+	@Override
+	public void deleteById(String id) {
+		districtRepository.deleteById(id);
+		
+	}
 }
