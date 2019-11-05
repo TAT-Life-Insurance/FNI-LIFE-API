@@ -13,8 +13,11 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+<<<<<<< Upstream, based on origin/master
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+=======
+>>>>>>> 96aa9d9 Agent
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -34,7 +37,6 @@ import com.ace.demoapi.common.ProductGroupType;
 import com.ace.demoapi.common.ResidentAddress;
 import com.ace.demoapi.common.UserRecorder;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -44,7 +46,6 @@ public class Agent implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "AGENT_GEN")
 	private String id;
 
 	private String codeNo;
