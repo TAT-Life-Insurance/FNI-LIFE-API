@@ -36,7 +36,7 @@ public class Branch implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "TOWNSHIPID", referencedColumnName = "ID")
 	private Township township;
-
+	
 	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "branch", orphanRemoval = true)
 	private List<SalesPoints> salesPointsList;

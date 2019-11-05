@@ -31,6 +31,8 @@ public class SalesPoints implements Serializable {
 	private String email;
 	private String receivableAcName;
 
+	
+	
 	@OneToOne
 	@JoinColumn(name = "TOWNSHIPID", referencedColumnName = "ID")
 	private Township township;

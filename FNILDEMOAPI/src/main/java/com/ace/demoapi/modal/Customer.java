@@ -30,7 +30,7 @@ import com.ace.demoapi.common.PassportType;
 import com.ace.demoapi.common.PermanentAddress;
 import com.ace.demoapi.common.ResidentAddress;
 import com.ace.demoapi.common.UserRecorder;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -130,7 +130,8 @@ public class Customer implements Serializable {
 	@JoinColumn(name = "NATIONALITYID", referencedColumnName = "ID")
 	private Country country;
 
-	@JsonManagedReference
+
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer", orphanRemoval = true)
 	private List<CustomerInfoStatus> customerStatusList;
 
