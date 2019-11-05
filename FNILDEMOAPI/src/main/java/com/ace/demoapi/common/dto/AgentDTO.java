@@ -4,6 +4,7 @@ import java.util.Date;
 
 import com.ace.demoapi.common.Gender;
 import com.ace.demoapi.common.IdType;
+import com.ace.demoapi.common.ResidentAddress;
 
 import lombok.Data;
 
@@ -16,7 +17,7 @@ public class AgentDTO {
 	private Gender gender;
 	private IdType idType;
 	private String fullIdNo;
-	private String address;
 	private String licenseNo;
+	private ResidentAddress residentAddress;
 
 }

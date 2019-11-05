@@ -21,27 +21,27 @@ public class AgentController {
 
 	@GetMapping(path = "/agents", produces = "application/json")
 	public List<AgentDTO> getAllAgent() {
-		
+
 		List<Agent> agentList = new ArrayList<>();
 		List<AgentDTO> agentDTOList = new ArrayList<>();
 		agentList = agentService.findAllAgent().stream().limit(10).collect(Collectors.toList());
-		 for(Agent agent:agentList ) {
-			 AgentDTO agentDTO = new AgentDTO();
-			 agentDTO.setId(agent.getId());
-			 agentDTO.setFullName(agent.getFullName());
-			 agentDTO.setFatherName(agent.getFatherName());
-			 agentDTO.setDateOfBirth(agent.getDateOfBirth());
-			 agentDTO.setGender(agent.getGender());
-			 agentDTO.setIdType(agent.getIdType());
-			 if(null != agent.getFullIdNo()) {
-				 agentDTO.setFullIdNo(agent.getFullIdNo());
-			 }
-			 agentDTO.setAddress(agent.getFullAddress());
-			 agentDTO.setLicenseNo(agent.getLiscenseNo());
-			 agentDTOList.add(agentDTO);
-		 }
-		
-		 return agentDTOList;
+		for (Agent agent : agentList) {
+			AgentDTO agentDTO = new AgentDTO();
+			agentDTO.setId(agent.getId());
+			agentDTO.setFullName(agent.getFullName());
+			agentDTO.setFatherName(agent.getFatherName());
+			agentDTO.setDateOfBirth(agent.getDateOfBirth());
+			agentDTO.setGender(agent.getGender());
+			agentDTO.setIdType(agent.getIdType());
+			if (null != agent.getFullIdNo()) {
+				agentDTO.setFullIdNo(agent.getFullIdNo());
+			}
+			agentDTO.setResidentAddress(agent.getResidentAddress());
+			agentDTO.setLicenseNo(agent.getLiscenseNo());
+			agentDTOList.add(agentDTO);
+		}
+
+		return agentDTOList;
 	}
 
 	@GetMapping(path = "/agent/{id}", produces = "application/json")

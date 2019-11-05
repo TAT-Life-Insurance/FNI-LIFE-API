@@ -8,6 +8,7 @@ import com.ace.demoapi.common.ResidentAddress;
 import com.ace.demoapi.modal.Branch;
 
 import lombok.Data;
+
 @Data
 public class CustomerDTO {
 	private String id;
@@ -19,5 +20,5 @@ public class CustomerDTO {
 	private IdType idType;
 	private String fullIdNo;
 	private ResidentAddress residentAddress;
-	private Branch pranch;
+	private Branch branch;
 }

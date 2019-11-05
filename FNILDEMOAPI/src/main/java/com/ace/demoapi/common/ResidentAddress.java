@@ -15,6 +15,7 @@ import lombok.Data;
 public class ResidentAddress implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	private String residentAddress;
 	@OneToOne
 	@JoinColumn(name = "RESIDENTTOWNSHIPID", referencedColumnName = "ID")

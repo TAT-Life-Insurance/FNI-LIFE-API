@@ -22,23 +22,25 @@ public class CustomerController {
 	public List<CustomerDTO> getAllCustomer() {
 		List<Customer> customerList = new ArrayList<>();
 		List<CustomerDTO> customerDTOList = new ArrayList<>();
-		 customerList = customerService.findAllCustomer().stream().limit(10).collect(Collectors.toList());
-		 for(Customer customer :customerList ) {
-			 CustomerDTO customerDTO = new CustomerDTO();
-			 customerDTO.setId(customer.getId());
-			 customerDTO.setFullName(customer.getFullName());
-			 customerDTO.setFatherName(customer.getFatherName());
-			 customerDTO.setDateOfBirth(customer.getDateOfBirth());
-			 customerDTO.setGender(customer.getGender());
-			 customerDTO.setIdType(customer.getIdType());
-			 if(null != customer.getFullIdNo()) {
-				 customerDTO.setFullIdNo(customer.getFullIdNo());
-			 }
-//			 customerDTO.setAddress(customer.getFullAddress());
-			 customerDTOList.add(customerDTO);
-		 }
-		
-		 return customerDTOList;
+		customerList = customerService.findAllCustomer().stream().limit(10).collect(Collectors.toList());
+		for (Customer customer : customerList) {
+			CustomerDTO customerDTO = new CustomerDTO();
+			customerDTO.setId(customer.getId());
+			customerDTO.setFullName(customer.getFullName());
+			customerDTO.setFatherName(customer.getFatherName());
+			customerDTO.setDateOfBirth(customer.getDateOfBirth());
+			customerDTO.setGender(customer.getGender());
+			customerDTO.setIdType(customer.getIdType());
+			if (null != customer.getFullIdNo()) {
+				customerDTO.setFullIdNo(customer.getFullIdNo());
+			}
+			customerDTO.setBranch(customer.getBranch());
+			customerDTO.setResidentAddress(customer.getResidentAddress());
+			// customerDTO.setAddress(customer.getFullAddress());
+			customerDTOList.add(customerDTO);
+		}
+
+		return customerDTOList;
 	}
 
 	@GetMapping(path = "/customer/{id}", produces = "application/json")
