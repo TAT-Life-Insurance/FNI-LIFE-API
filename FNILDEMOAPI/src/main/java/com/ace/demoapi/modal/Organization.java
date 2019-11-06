@@ -67,5 +67,12 @@ public class Organization implements Serializable {
 		}
 		return fullAddress;
 	}
+	
+
+	public String getOwnerNameForView() {
+		if (OwnerName == null || OwnerName.isEmpty())
+			return "-";
+		return OwnerName;
+	}
 
 }
