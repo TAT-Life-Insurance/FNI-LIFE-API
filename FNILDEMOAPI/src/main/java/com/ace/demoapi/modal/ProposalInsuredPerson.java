@@ -19,6 +19,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -33,18 +34,21 @@ import com.ace.demoapi.common.Gender;
 import com.ace.demoapi.common.IdType;
 import com.ace.demoapi.common.Name;
 import com.ace.demoapi.common.ResidentAddress;
+import com.ace.demoapi.common.TableName;
 import com.ace.demoapi.common.UserRecorder;
 import com.ace.demoapi.common.Utils;
 import com.ace.demoapi.common.dto.BeneficiariesInfoDTO;
 import com.ace.demoapi.common.dto.InsuredPersonAddOnDTO;
 import com.ace.demoapi.common.dto.InsuredPersonInfoDTO;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
 
 @Data
 @Entity
+@Table(name = TableName.PROPOSALINSUREDPERSON)
 public class ProposalInsuredPerson {
 	private boolean approved;
 	private boolean needMedicalCheckup;
@@ -64,7 +68,6 @@ public class ProposalInsuredPerson {
 	private int height;
 	private double premiumRate;
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PRLINSURPERSON_GEN")
 	private String id;
 
 	private String rejectReason;
@@ -100,37 +103,40 @@ public class ProposalInsuredPerson {
 	@Embedded
 	private Name name;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "PRODUCTID", referencedColumnName = "ID")
 	private Product product;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "TYPESOFSPORTID", referencedColumnName = "ID")
 	private TypesOfSport typesOfSport;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "OCCUPATIONID", referencedColumnName = "ID")
 	private Occupation occupation;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "RISKYOCCUPATIONID", referencedColumnName = "ID")
 	private RiskyOccupation riskyOccupation;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "CUSTOMERID", referencedColumnName = "ID")
 	private Customer customer;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "RELATIONSHIPID", referencedColumnName = "ID")
 	private RelationShip relationship;
 
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "LIFEPROPOSALID", referencedColumnName = "ID")
 	private LifeProposal lifeProposal;
 
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "proposalInsuredPerson", orphanRemoval = true)
 	private List<InsuredPersonAttachment> attachmentList;
 
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "proposalInsuredPerson", orphanRemoval = true)
 	private List<InsuredPersonAddon> insuredPersonAddOnList;
 
@@ -138,6 +144,7 @@ public class ProposalInsuredPerson {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "proposalInsuredPerson", orphanRemoval = true)
 	private List<InsuredPersonKeyFactorValue> keyFactorValueList;
 
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "proposalInsuredPerson", orphanRemoval = true)
 	private List<InsuredPersonBeneficiaries> insuredPersonBeneficiariesList;
 

@@ -5,21 +5,21 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.ace.demoapi.common.TableName;
 import com.ace.demoapi.common.UserRecorder;
 
 import lombok.Data;
 
 @Data
 @Entity
+@Table(name=TableName.CUR)
 public class Currency implements Serializable {
 	private static final long serialVersionUID = -6992572646153666363L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "CURRENCY_GEN")
 	private String id;
 
 	@Column(name = "CUR")

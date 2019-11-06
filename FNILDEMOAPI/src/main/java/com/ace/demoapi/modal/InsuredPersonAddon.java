@@ -9,18 +9,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.ace.demoapi.common.TableName;
 import com.ace.demoapi.common.UserRecorder;
 import com.ace.demoapi.common.dto.InsuredPersonAddOnDTO;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
 @Data
 @Entity
+@Table(name=TableName.INSUREDPERSONADDON)
 public class InsuredPersonAddon {
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "INSUREDPERSONADDON_GEN")
 	private String id;
 
 	private double proposedPremium;
@@ -29,10 +32,11 @@ public class InsuredPersonAddon {
 	private double approvedSumInsured;
 	private double premiumRate;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "LIFEPRODUCTADDONID", referencedColumnName = "ID")
 	private AddOn addOn;
 
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "LIFEPROPOSALINSUREDPERSONID", referencedColumnName = "ID")
 	private ProposalInsuredPerson proposalInsuredPerson;

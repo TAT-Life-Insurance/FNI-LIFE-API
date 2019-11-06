@@ -34,6 +34,8 @@ import com.ace.demoapi.common.ProposalType;
 import com.ace.demoapi.common.SaleChannelType;
 import com.ace.demoapi.common.UserRecorder;
 import com.ace.demoapi.common.Utils;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -53,7 +55,6 @@ public class LifeProposal implements Serializable, IDataModel, IProposal {
 	private double currencyRate;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "LIFEPROPOSAL_GEN")
 	private String id;
 
 	private String proposalNo;
@@ -77,41 +78,45 @@ public class LifeProposal implements Serializable, IDataModel, IProposal {
 	@Enumerated(EnumType.STRING)
 	private ProposalStatus proposalStatus;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "BRANCHID", referencedColumnName = "ID")
 	private Branch branch;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "SALESPOINTSID", referencedColumnName = "ID")
 	private SalesPoints salesPoints;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "CUSTOMERID", referencedColumnName = "ID")
 	private Customer customer;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	
+	@OneToOne
 	@JoinColumn(name = "ORGANIZATIONID", referencedColumnName = "ID")
 	private Organization organization;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "PAYMENTTYPEID", referencedColumnName = "ID")
 	private PaymentType paymentType;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	
+	@OneToOne
 	@JoinColumn(name = "AGENTID", referencedColumnName = "ID")
 	private Agent agent;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "SALEBANKID", referencedColumnName = "ID")
 	private BankBranch saleBank;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "LIFEPOLICYID", referencedColumnName = "ID")
 	private LifePolicy lifePolicy;
 
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "lifeProposal", orphanRemoval = true)
 	private List<ProposalInsuredPerson> proposalInsuredPersonList;
 
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "lifeProposal", orphanRemoval = true)
 	private List<LifeProposalAttachment> attachmentList;
 	@Embedded

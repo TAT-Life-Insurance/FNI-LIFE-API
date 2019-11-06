@@ -20,7 +20,6 @@ public class ProductContent implements Serializable {
 	private static final long serialVersionUID = 2253619645955447054L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PRODUCT_CONTENT_GEN")
 	private String id;
 
 	private String name;

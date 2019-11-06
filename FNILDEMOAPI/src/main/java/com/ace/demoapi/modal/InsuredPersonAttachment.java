@@ -8,25 +8,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Version;
 
-
+import com.ace.demoapi.common.TableName;
 import com.ace.demoapi.common.UserRecorder;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
 
 @Data
 @Entity
+@Table(name=TableName.INSUREDPERSONATTACHMENT)
 public class InsuredPersonAttachment {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "INSUREDPERSONATTACHMENT_GEN")
 	private String id;
 
 	private String name;
 	private String filePath;
 
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "LIFEPROPOSALINSUREDPERSONID", referencedColumnName = "ID")
 	private ProposalInsuredPerson proposalInsuredPerson;

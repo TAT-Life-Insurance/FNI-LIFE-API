@@ -32,7 +32,6 @@ public class AddOn implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "ADDON_GEN")
 	private String id;
 
 	@Column(name = "MAXIMUMVALUE")
@@ -50,7 +49,7 @@ public class AddOn implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private ProductBaseType productBaseType;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "PRODUCTCONTENTID", referencedColumnName = "ID")
 	private ProductContent productContent;
 

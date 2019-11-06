@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
 import com.ace.demoapi.common.UserRecorder;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
@@ -29,6 +30,7 @@ public class LifeProposalAttachment implements Serializable {
 	private String name;
 	private String filePath;
 
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "LIFEPROPOSALID", referencedColumnName = "ID")
 	private LifeProposal lifeProposal;

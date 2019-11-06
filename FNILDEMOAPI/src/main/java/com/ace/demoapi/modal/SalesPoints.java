@@ -22,7 +22,6 @@ import lombok.Data;
 public class SalesPoints implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "SALESPOINTS_GEN")
 	private String id;
 	private String name;
 	private String code;

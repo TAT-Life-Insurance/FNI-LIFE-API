@@ -9,25 +9,29 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.ace.demoapi.common.TableName;
 import com.ace.demoapi.common.UserRecorder;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
 
 @Data
 @Entity
+@Table(name = TableName.INSUREDPERSONKEYFACTORVALUE)
 public class InsuredPersonKeyFactorValue {
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "INSUREDPERSONKEYFACTORVALUE_GEN")
 	private String id;
 
 	private String value;
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "KEYFACTORID", referencedColumnName = "ID")
 	private KeyFactor keyFactor;
 
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "LIFEPROPOSALINSUREDPERSONID", referencedColumnName = "ID")
 	private ProposalInsuredPerson proposalInsuredPerson;

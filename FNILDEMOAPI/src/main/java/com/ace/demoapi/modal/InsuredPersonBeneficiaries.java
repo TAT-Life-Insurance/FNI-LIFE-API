@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
@@ -21,12 +22,15 @@ import com.ace.demoapi.common.Gender;
 import com.ace.demoapi.common.IdType;
 import com.ace.demoapi.common.Name;
 import com.ace.demoapi.common.ResidentAddress;
+import com.ace.demoapi.common.TableName;
 import com.ace.demoapi.common.UserRecorder;
 import com.ace.demoapi.common.dto.BeneficiariesInfoDTO;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 @Data
 @Entity
+@Table(name=TableName.INSUREDPERSONBENEFICIARIES)
 public class InsuredPersonBeneficiaries {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "INSUREDPERSONBENEFICIARIES_GEN")
@@ -56,10 +60,11 @@ public class InsuredPersonBeneficiaries {
 	@Embedded
 	private ResidentAddress residentAddress;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "RELATIONSHIPID", referencedColumnName = "ID")
 	private RelationShip relationship;
 
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "INSUREDPERSONID", referencedColumnName = "ID")
 	private ProposalInsuredPerson proposalInsuredPerson;

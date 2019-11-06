@@ -24,7 +24,6 @@ public class KeyFactor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "KEYFACTOR_GEN")
 	private String id;
 
 	private String value;

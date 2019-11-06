@@ -28,6 +28,7 @@ import com.ace.demoapi.common.PremiumRateType;
 import com.ace.demoapi.common.ProductBaseType;
 import com.ace.demoapi.common.StampFeeRateType;
 import com.ace.demoapi.common.UserRecorder;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
@@ -37,7 +38,6 @@ import lombok.Data;
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PRODUCT_GEN")
 	private String id;
 	private int maxTerm;
 	private int minTerm;
@@ -77,11 +77,11 @@ public class Product implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private PeriodType minTermType;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "PRODUCTCONTENTID", referencedColumnName = "ID")
 	private ProductContent productContent;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "PRODUCTGROUPID", referencedColumnName = "ID")
 	private ProductGroup productGroup;
 
@@ -94,12 +94,13 @@ public class Product implements Serializable {
 	@JoinColumn(name = "PRODUCTID", referencedColumnName = "ID")
 	private List<AddOn> addOnList;
 
+	@JsonBackReference
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "PRODUCT_KEYFACTOR_LINK", joinColumns = { @JoinColumn(name = "PRODUCTID", referencedColumnName = "ID") }, inverseJoinColumns = {
 			@JoinColumn(name = "KEYFACTORID", referencedColumnName = "ID") })
 	private List<KeyFactor> keyFactorList;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "CURRENCYID", referencedColumnName = "ID")
 	private Currency currency;
 
