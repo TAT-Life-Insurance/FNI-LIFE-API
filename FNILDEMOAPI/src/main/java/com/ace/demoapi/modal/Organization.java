@@ -29,7 +29,6 @@ public class Organization implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "ORGANIZATION_GEN")
 	private String id;
 	@Column(name = "CODE_NO")
 	private String codeNo;

@@ -4,8 +4,6 @@ import java.util.Date;
 
 import com.ace.demoapi.common.Gender;
 import com.ace.demoapi.common.IdType;
-import com.ace.demoapi.common.ResidentAddress;
-import com.ace.demoapi.modal.Branch;
 
 import lombok.Data;
 
@@ -19,6 +17,7 @@ public class CustomerDTO {
 	private Gender gender;
 	private IdType idType;
 	private String fullIdNo;
-	private ResidentAddress residentAddress;
-	private Branch branch;
+	private String residentAddressId;
+	private String branchId;
+	private String countryId;
 }

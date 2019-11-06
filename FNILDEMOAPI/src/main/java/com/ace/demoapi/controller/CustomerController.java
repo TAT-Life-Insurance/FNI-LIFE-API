@@ -26,6 +26,7 @@ public class CustomerController {
 		for (Customer customer : customerList) {
 			CustomerDTO customerDTO = new CustomerDTO();
 			customerDTO.setId(customer.getId());
+			customerDTO.setInitialId(customer.getInitialId());
 			customerDTO.setFullName(customer.getFullName());
 			customerDTO.setFatherName(customer.getFatherName());
 			customerDTO.setDateOfBirth(customer.getDateOfBirth());
@@ -34,8 +35,13 @@ public class CustomerController {
 			if (null != customer.getFullIdNo()) {
 				customerDTO.setFullIdNo(customer.getFullIdNo());
 			}
-			customerDTO.setBranch(customer.getBranch());
-			customerDTO.setResidentAddress(customer.getResidentAddress());
+			if(null != customer.getBranch()) {
+				customerDTO.setBranchId(customer.getBranch().getId());	
+			}
+			if(null != customer.getCountry()) {
+				customerDTO.setCountryId(customer.getCountry().getId());	
+			}
+			customerDTO.setResidentAddressId(customer.getResidentAddress().getTownship().getId());
 			// customerDTO.setAddress(customer.getFullAddress());
 			customerDTOList.add(customerDTO);
 		}

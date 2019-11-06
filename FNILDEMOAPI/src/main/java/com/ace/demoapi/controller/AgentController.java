@@ -5,8 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ace.demoapi.common.dto.AgentDTO;
@@ -28,6 +31,7 @@ public class AgentController {
 		for (Agent agent : agentList) {
 			AgentDTO agentDTO = new AgentDTO();
 			agentDTO.setId(agent.getId());
+			agentDTO.setInitialId(agent.getInitialId());
 			agentDTO.setFullName(agent.getFullName());
 			agentDTO.setFatherName(agent.getFatherName());
 			agentDTO.setDateOfBirth(agent.getDateOfBirth());
@@ -36,7 +40,18 @@ public class AgentController {
 			if (null != agent.getFullIdNo()) {
 				agentDTO.setFullIdNo(agent.getFullIdNo());
 			}
-			agentDTO.setResidentAddress(agent.getResidentAddress());
+			if(null != agent.getResidentAddress()) {
+				
+				agentDTO.setResidentAddressId(agent.getResidentAddress().getTownship().getId());
+			}
+			if(null != agent.getBranch()) {
+				
+				agentDTO.setBranchId(agent.getBranch().getId());
+			}
+			if(null != agent.getCountry()) {
+				
+				agentDTO.setCountryId(agent.getCountry().getId());
+			}
 			agentDTO.setLicenseNo(agent.getLiscenseNo());
 			agentDTOList.add(agentDTO);
 		}
@@ -50,4 +65,16 @@ public class AgentController {
 		return agent;
 	}
 
+	@PostMapping(path = "/saveAgent")
+	public Agent saveAgent(@RequestBody Agent agent) {
+		agentService.saveAgent(agent);
+		return agent;
+	}
+	
+	
+	@DeleteMapping("/deleteAgent/{id}")
+	public void deleteById(@PathVariable String id){
+		agentService.deleteById(id);
+		
+	}
 }

@@ -178,5 +178,10 @@ public class Customer implements Serializable {
 		}
 		return result;
 	}
+	public String getFullIdNoForView() {
+		if (fullIdNo == null || fullIdNo.isEmpty())
+			return "Still Applying";
+		return fullIdNo;
+	}
 
 }
