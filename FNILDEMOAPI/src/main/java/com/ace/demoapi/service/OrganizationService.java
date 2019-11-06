@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ace.demoapi.modal.Organization;
 import com.ace.demoapi.repository.OrganizationRepository;
 
@@ -27,6 +26,17 @@ public class OrganizationService implements IOrganizationService {
 	public List<Organization> findAllOrganization() {
 		
 		return organizationRepository.findAll();
+	}
+	
+	@Override
+	public void saveOrganization(Organization organization) {
+		organizationRepository.save(organization);
+	    }
+
+	@Override
+	public void deleteById(String id) {
+		organizationRepository.deleteById(id);
+		
 	}
 
 

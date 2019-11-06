@@ -32,5 +32,5 @@ public class ResidentAddress implements Serializable {
 
 		return residentAddress + ", " + township.getFullTownShip();
 	}
-
+	
 }

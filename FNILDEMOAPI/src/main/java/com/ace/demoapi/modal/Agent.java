@@ -13,8 +13,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -33,6 +31,7 @@ import com.ace.demoapi.common.PermanentAddress;
 import com.ace.demoapi.common.ProductGroupType;
 import com.ace.demoapi.common.ResidentAddress;
 import com.ace.demoapi.common.UserRecorder;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Data;
 
@@ -42,7 +41,6 @@ public class Agent implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "AGENT_GEN")
 	private String id;
 
 	private String codeNo;
@@ -70,6 +68,7 @@ public class Agent implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date appointedDate;
 
+	@JsonBackReference
 	@ElementCollection
 	@CollectionTable(name = "AGENT_FAMILY_LINK", joinColumns = @JoinColumn(name = "AGENTID", referencedColumnName = "ID"))
 	private List<FamilyInfo> familyInfo;

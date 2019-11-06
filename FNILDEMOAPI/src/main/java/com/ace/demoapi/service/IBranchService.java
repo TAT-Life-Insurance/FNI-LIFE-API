@@ -11,5 +11,9 @@ public interface IBranchService {
 	Optional<Branch> findBranchById(String id);
 
 	List<Branch> findAllBranch();
+	
+	public void saveBranch(Branch branch);
+	 
+    public void deleteById(String id);
 
 }

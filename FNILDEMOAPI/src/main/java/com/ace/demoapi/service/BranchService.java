@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.ace.demoapi.modal.Agent;
 import com.ace.demoapi.modal.Branch;
 import com.ace.demoapi.repository.BranchRepository;
 
@@ -27,6 +25,18 @@ public class BranchService implements IBranchService {
 		
 		return branchRepository.findAll();
 	}
+	
+	@Override
+	public void saveBranch(Branch branch) {
+		branchRepository.save(branch);
+	    }
+
+	@Override
+	public void deleteById(String id) {
+		branchRepository.deleteById(id);
+		
+	}
+
 	
 
 }

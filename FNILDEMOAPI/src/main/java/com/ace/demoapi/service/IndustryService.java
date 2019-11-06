@@ -5,10 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.ace.demoapi.modal.Bank;
 import com.ace.demoapi.modal.Industry;
-import com.ace.demoapi.repository.BankRepository;
 import com.ace.demoapi.repository.IndustryRepository;
 
 @Service
@@ -28,6 +25,18 @@ public class IndustryService implements IIndustryService {
 		
 		return industryRepository.findAll();
 	}
+	
+	@Override
+	public void saveIndustry(Industry industry) {
+		industryRepository.save(industry);
+	    }
+
+	@Override
+	public void deleteById(String id) {
+		industryRepository.deleteById(id);
+		
+	}
+
 
 
 }

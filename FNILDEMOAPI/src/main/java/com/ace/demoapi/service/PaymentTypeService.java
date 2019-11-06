@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ace.demoapi.modal.PaymentType;
 import com.ace.demoapi.repository.PaymentTypeRepository;
 
@@ -25,6 +24,17 @@ public class PaymentTypeService implements IPaymentTypeService {
 	public List<PaymentType>  findAllPaymentType() {
 		
 		return paymentTypeRepository.findAll();
+	}
+	
+	@Override
+	public void savePaymentType(PaymentType paymentType) {
+		paymentTypeRepository.save(paymentType);
+	    }
+
+	@Override
+	public void deleteById(String id) {
+		paymentTypeRepository.deleteById(id);
+		
 	}
 
 	
