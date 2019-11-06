@@ -40,9 +40,18 @@ public class AgentController {
 			if (null != agent.getFullIdNo()) {
 				agentDTO.setFullIdNo(agent.getFullIdNo());
 			}
-			agentDTO.setResidentAddress(agent.getResidentAddress());
-			agentDTO.setBranch(agent.getBranch());
-			agentDTO.setCountry(agent.getCountry());
+			if(null != agent.getResidentAddress()) {
+				
+				agentDTO.setResidentAddressId(agent.getResidentAddress().getTownship().getId());
+			}
+			if(null != agent.getBranch()) {
+				
+				agentDTO.setBranchId(agent.getBranch().getId());
+			}
+			if(null != agent.getCountry()) {
+				
+				agentDTO.setCountryId(agent.getCountry().getId());
+			}
 			agentDTO.setLicenseNo(agent.getLiscenseNo());
 			agentDTOList.add(agentDTO);
 		}
