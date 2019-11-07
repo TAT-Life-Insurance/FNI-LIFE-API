@@ -1,6 +1,5 @@
 package com.ace.demoapi.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,33 +19,35 @@ public class CustomerController {
 
 	@GetMapping(path = "/customers")
 	public List<CustomerDTO> getAllCustomer() {
-		List<Customer> customerList = new ArrayList<>();
-		List<CustomerDTO> customerDTOList = new ArrayList<>();
-		customerList = customerService.findAllCustomer().stream().limit(10).collect(Collectors.toList());
-		for (Customer customer : customerList) {
-			CustomerDTO customerDTO = new CustomerDTO();
-			customerDTO.setId(customer.getId());
-			customerDTO.setInitialId(customer.getInitialId());
-			customerDTO.setFullName(customer.getFullName());
-			customerDTO.setFatherName(customer.getFatherName());
-			customerDTO.setDateOfBirth(customer.getDateOfBirth());
-			customerDTO.setGender(customer.getGender());
-			customerDTO.setIdType(customer.getIdType());
-			if (null != customer.getFullIdNo()) {
-				customerDTO.setFullIdNo(customer.getFullIdNo());
-			}
-			if(null != customer.getBranch()) {
-				customerDTO.setBranchId(customer.getBranch().getId());	
-			}
-			if(null != customer.getCountry()) {
-				customerDTO.setCountryId(customer.getCountry().getId());	
-			}
-			customerDTO.setResidentAddressId(customer.getResidentAddress().getTownship().getId());
-			// customerDTO.setAddress(customer.getFullAddress());
-			customerDTOList.add(customerDTO);
+		return customerService.findAllCustomer().stream().map(this::getDTOFromCustomer).collect(Collectors.toList());
+	}
+	
+	private CustomerDTO getDTOFromCustomer(Customer customer) {
+		CustomerDTO customerDTO = CustomerDTO.builder()
+				.id(customer.getId())
+				.initialId(customer.getInitialId())
+				.fullName(customer.getFullName())
+				.fatherName(customer.getFatherName())
+				.dateOfBirth(customer.getDateOfBirth())
+				.gender(customer.getGender())
+				.idType(customer.getIdType())
+				.build();
+		
+		if (null != customer.getFullIdNo()) {
+			customerDTO.setFullIdNo(customer.getFullIdNo());
 		}
-
-		return customerDTOList;
+		if(null != customer.getBranch()) {
+			customerDTO.setBranchId(customer.getBranch().getId());	
+		}
+		if(null != customer.getCountry()) {
+			customerDTO.setCountryId(customer.getCountry().getId());	
+		}
+		if(null != customer.getResidentAddress()) {
+			if(null != customer.getResidentAddress().getTownship()) {
+				customerDTO.setResidentAddressId(customer.getResidentAddress().getTownship().getId());
+			}
+		}
+		return customerDTO;
 	}
 
 	@GetMapping(path = "/customer/{id}", produces = "application/json")
