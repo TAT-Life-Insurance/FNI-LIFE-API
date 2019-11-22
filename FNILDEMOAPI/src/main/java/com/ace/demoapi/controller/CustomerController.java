@@ -19,7 +19,7 @@ public class CustomerController {
 
 	@GetMapping(path = "/customers")
 	public List<CustomerDTO> getAllCustomer() {
-		return customerService.findAllCustomer().stream().map(this::getDTOFromCustomer).collect(Collectors.toList());
+		return customerService.findAllCustomer().stream().limit(10).map(this::getDTOFromCustomer).collect(Collectors.toList());
 	}
 	
 	private CustomerDTO getDTOFromCustomer(Customer customer) {
